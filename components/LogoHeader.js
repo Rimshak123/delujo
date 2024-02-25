@@ -1,12 +1,11 @@
-import { StyleSheet, Text, View, SafeAreaView, Image } from "react-native";
+import { StyleSheet, Text, View, Image } from "react-native";
 import React from "react";
 
 const LogoHeader = () => {
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <Text style={styles.TextH}>Welcome to Delujo</Text>
-      <Image></Image>
-    </SafeAreaView>
+    </View>
   );
 };
 
@@ -15,6 +14,7 @@ export default LogoHeader;
 const styles = StyleSheet.create({
   TextH: {
     alignItems: "center",
+    color: "#fff",
   },
   container: {
     backgroundColor: "#7251C3",
