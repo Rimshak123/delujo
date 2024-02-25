@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View,Image } from "react-native";
 import React, { useState } from "react";
 import CustomButton from "../components/CustomButton";
 import LogoHeader from "../components/LogoHeader";
@@ -12,19 +12,25 @@ const login = () => {
   };
   return (
     <View style={styles.container}>
+
+
       <CustomButton />
       <TextBox
-        title="Name"
-        placeholder="Enter your name"
+         
+        placeholder="Sign up with Facebook"
         onChangeText={handleTextChange}
         value={text}
       />
       <TextBox
-        title="Email"
-        placeholder="Enter your email"
+        placeholder="Sign up with Google"
         onChangeText={handleTextChange}
         value={text}
       />
+      <TextBox
+       placeholder="yourEmail@email.com"
+       onChangeText={handleTextChange}
+       value={text}
+       />
       <NormalButton title="Login" />
     </View>
   );
@@ -33,13 +39,14 @@ export default login;
 
 const styles = StyleSheet.create({
   container: {
+  
     backgroundColor: "#fff",
     width: "100%",
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    height: "60%",
+    height: "72%",
     justifyContent: "top",
-    padding: 10,
+    padding: 25,
     alignItems: "center",
   },
 });

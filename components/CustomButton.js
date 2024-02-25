@@ -5,7 +5,7 @@ const CustomButton = () => {
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.leftButton}>
-        <Text>Signup</Text>
+        <Text>I am new here!</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.rightButton}>
         <Text>Login</Text>
@@ -27,9 +27,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
 
-    width: 100,
-    height: 40,
-    backgroundColor: "red",
+    width: 110,
+    height: 35,
+    fontSize:13,
+    backgroundColor: "#7251C3",
     //borderBottomLeftRadius: number
     borderBottomRightRadius: 20,
     //borderTopLeftRadius: number
@@ -42,9 +43,10 @@ const styles = StyleSheet.create({
     //borderColor: "rgba(0,0,0,0.2)",
     alignItems: "center",
     justifyContent: "center",
-    width: 100,
-    height: 40,
-    backgroundColor: "green",
+    width: 110,
+    fontSize:13,
+    height: 35,
+    backgroundColor: "#d3d3d3",
     //borderBottomLeftRadius: number
     borderBottomLeftRadius: 20,
     //borderTopLeftRadius: number

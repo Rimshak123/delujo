@@ -23,9 +23,10 @@ const styles = StyleSheet.create({
     //borderColor: "rgba(0,0,0,0.2)",
     alignItems: "center",
     justifyContent: "center",
+    marginTop:25,
     width: 100,
     height: 40,
-    backgroundColor: "red",
+    backgroundColor: "#7251C3",
     //borderBottomLeftRadius: number
     borderRadius: 20,
     //borderTopLeftRadius: number
