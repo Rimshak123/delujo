@@ -5,8 +5,7 @@ const TextBox = (props) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{props.title}</Text>
-
-      <TextInput
+       <TextInput
         style={styles.input}
         placeholder={props.placeholder}
         onChangeText={props.onChangeText}
@@ -23,6 +22,9 @@ const styles = StyleSheet.create({
   title: {
     marginBottom: 5,
     fontSize: 14,
+    marginTop:10,
+    marginLeft:15,
+    color:"#c0c0c0",
   },
   input: {
     borderWidth: 1,

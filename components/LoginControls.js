@@ -17,17 +17,14 @@ const login = () => {
       <CustomButton />
       <FBLoginButton />
       <GoogleLoginButton />
+    
       <TextBox
-        placeholder="Sign up with Google"
-        onChangeText={handleTextChange}
-        value={text}
-      />
-      <TextBox
+      title="Email Address"
         placeholder="yourEmail@email.com"
         onChangeText={handleTextChange}
         value={text}
       />
-      <NormalButton title="Login" />
+      <NormalButton title="NEXT" />
     </View>
   );
 };
@@ -43,5 +40,7 @@ const styles = StyleSheet.create({
     justifyContent: "top",
     padding: 25,
     alignItems: "center",
+    
   },
+  
 });
