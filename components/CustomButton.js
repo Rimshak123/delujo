@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React from "react";
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 const CustomButton = () => {
   return (
@@ -22,34 +23,26 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   rightButton: {
-    //borderWidth: 1,
-    //borderColor: "rgba(0,0,0,0.2)",
     alignItems: "center",
     justifyContent: "center",
-
-    width: 110,
-    height: 35,
-    fontSize:13,
+    padding: 10,
+    color: "#fff",
+    width: 150,
+    height: 50,
+    fontSize: 10,
     backgroundColor: "#7251C3",
-    //borderBottomLeftRadius: number
     borderBottomRightRadius: 20,
-    //borderTopLeftRadius: number
     marginLeft: "0px",
     borderTopRightRadius: 20,
   },
   leftButton: {
-    // borderWidth: 1,
-    // marginRight: "0px",
-    //borderColor: "rgba(0,0,0,0.2)",
     alignItems: "center",
     justifyContent: "center",
-    width: 110,
-    fontSize:13,
-    height: 35,
+    width: 150,
+    height: 50,
+    fontSize: 13,
     backgroundColor: "#d3d3d3",
-    //borderBottomLeftRadius: number
     borderBottomLeftRadius: 20,
-    //borderTopLeftRadius: number
     borderTopLeftRadius: 20,
   },
 });
