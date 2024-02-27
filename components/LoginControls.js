@@ -14,7 +14,8 @@ const login = () => {
   };
   return (
     <View style={styles.container}>
-      <CustomButton />
+      <CustomButton
+      />
       <FBLoginButton />
       <GoogleLoginButton />
     
