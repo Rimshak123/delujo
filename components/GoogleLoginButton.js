@@ -17,11 +17,11 @@ const GoogleLoginButton = () => {
           flex: 1,
           flexDirection: "row",
           margin: 10,
-          backgroundColor: "#F5F5F5",
+         // backgroundColor: "#F5F5F5",
           height: 10,
           borderRadius: 20,
           backgroundColor: "#7251C3",
-          borderBlockColor: "#000000",
+          borderBlockColor: "#242124",
           borderStyle: "solid",
           borderWidth: 1,
           width: 300,
@@ -34,6 +34,7 @@ const GoogleLoginButton = () => {
         <Text
           style={{
             padding: 15,
+            color: "#fff",
           }}
         >
           Sign up with Google
@@ -52,6 +53,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     marginTop: 5,
     marginLeft: 5,
+    backgroundColor:"#7251C3",
   },
   logo: {
     width: 66,

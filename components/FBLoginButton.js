@@ -21,7 +21,7 @@ const FBLoginButton = () => {
           backgroundColor: "#7251C3",
           height: 10,
           borderRadius: 20,
-          borderBlockColor: "#000000",
+          borderBlockColor: "#242124",
           borderStyle: "solid",
           borderWidth: 1,
           width: 300,
@@ -34,6 +34,7 @@ const FBLoginButton = () => {
         <Text
           style={{
             padding: 15,
+            color: "#fff",
           }}
         >
           Sign up with Facebook
@@ -56,6 +57,7 @@ const styles = StyleSheet.create({
   logo: {
     width: 66,
     height: 58,
+    
   },
 });
 export default FBLoginButton;
