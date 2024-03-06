@@ -1,10 +1,27 @@
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React from "react";
+//import FaceBookIcon from '../assets/FaceBookIcon';
+import FaceBookIcon from '../icons/FaceBookIcon';
+import GoogleIcon from "../icons/GoogleIcon";
 
 const NormalButton = (props) => {
+  const { title, width, height, iconType } = props;
+
+  const renderIcon = () => {
+    switch (iconType) {
+      case 'facebook':
+        return <FaceBookIcon />;
+      case 'google':
+        return <GoogleIcon />;
+      default:
+        return null;
+    }
+  };
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.Button}>
+     <TouchableOpacity style={[styles.Button, { width, height }]}>
+     {iconType && renderIcon()}
+     <View style={styles.textContainer}></View>
         <Text style={{ color: "#fff" }}>{props.title}</Text>
       </TouchableOpacity>
     </View>
@@ -19,12 +36,15 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   Button: {
+    flexDirection:'row',
     alignItems: "center",
     justifyContent: "center",
     marginTop: 25,
-    width: 100,
-    height: 40,
+   
     backgroundColor: "#7251C3",
-    borderRadius: 20,
+    borderRadius: 15,
+  },
+  textContainer: {
+    marginLeft: 10, // Add margin between the icon and text
   },
 });
