@@ -1,31 +1,20 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, SafeAreaView } from "react-native";
-import LoginScreen from "./screens/login";                    //1nd screen
-//import{ createAppContainer} from "react-navigation";
-//import { createStackNavigator } from "@react-navigation/stack";
-//import Login2 from "./screens/Login2";
-import CustomButton from "./components/CustomButton";
-import NormalButton from "./components/NormalButton";
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import MyBundles from "./screens/MyBundles";
+import LoginScreen from "./screens/LoginScreen";
+import DetailsScreen from "./screens/DetailsScreen";
+import FeedScreen from "./screens/FeedScreen";
+import WelcomeUsername from "./screens/WelcomeUsername";
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
-    <LoginScreen/>
-    </SafeAreaView>
+  // <DetailsScreen/>
+    // <MyBundles/>
+        // <LoginScreen/>
+  <WelcomeUsername/>
+  // <FeedScreen/>
   );
-  
+
 }
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-})
-
-
-
-
-
-
