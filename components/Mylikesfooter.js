@@ -2,7 +2,9 @@ import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
 const Mylikesfooter = () => {
+   
   return (
+   
     <View style={styles.footerContainer}>
       <Image
         source={require('../assets/footer-base.png')}
@@ -48,6 +50,7 @@ const Mylikesfooter = () => {
             style={styles.icon5}
           />
           <Text style={styles.iconText}>Profile</Text>
+         
         </TouchableOpacity>
       </View>
     </View>
