@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, Image, Text, TextInput } from 'react-native';
 
-const Textbar = ({ imagePath, labelText, placeholder, handleInputChange, value }) => {
+const Textbar = ({ imagePath, labelText, placeholder, handleInputChange, value ,textbarMarginTop,textbarMarginLeft,labelLeft}) => {
     return (
-      <View style={{ marginTop: 10 }}>
+      <View style={{ marginTop: textbarMarginTop,marginLeft: textbarMarginLeft  }}>
         <Image source={imagePath} style={styles.image} resizeMode="cover" />
-        <Text style={styles.imageText}>{labelText}</Text>
+        <Text style={[styles.imageText,{ left:labelLeft}]}>{labelText}</Text>
         <View style={styles.textInput}>
           <TextInput
             style={styles.input}
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     },
     imageText: {
         position: 'absolute',
-        left: 33,
+        // left: 33,
         bottom: 55, 
         fontSize: 11,
         color: '#868688',

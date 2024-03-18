@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, Image, Text, TextInput } from 'react-native';
-import NormalButton from '../components/NormalButton';
-import CustomButton from '../components/CustomButton';
-import Textbar from '../components/Textbar';
+import NormalButton from './NormalButton';
+import CustomButton from './CustomButton';
+import Textbar from './Textbar';
+import CustomBottomTabBar from '../components/CustomBottomTabBar';
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+
 const LoginBody = () => {
     const [inputText, setInputText] = useState('');
     const handleInputChange = (text) => {
@@ -32,12 +36,14 @@ const LoginBody = () => {
                     placeholder="Esteban@innovationsmedia.com"
                     handleInputChange={handleInputChange}
                     value={inputText}
+                    textbarMarginTop={10}
+                    labelLeft={33}
                 />
             </View>
 
             {/* Login Button */}
             <View style={styles.buttonContainer}>
-                <NormalButton title="Login" width={130} height={40} borderRadius={15} />
+                <NormalButton title="Login"   width={130} height={40} borderRadius={15} />
             </View>
         </View>
     );

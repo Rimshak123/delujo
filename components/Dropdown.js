@@ -1,134 +1,79 @@
-// import React, { useState } from 'react';
-// import { View, StyleSheet, Image, Text, TextInput } from 'react-native';
-
-// const Dropdown = ({label}) => {
-//     return (
-//       <View style={styles.container}>
-//         <Image  source={require('../assets/input-Login-removebg-preview.png')}
-//         style={styles.image} 
-//         resizeMode="cover" />
-//         <Text style={styles.imageText}>{label}</Text>
-       
-//       </View>
-//     );
-//   };
-
-// const styles = StyleSheet.create({
-//     container:{
-//        marginTop: 10,
-        
-//     },
-
-//     image: {
-       
-//         width: 320,
-//         height: 65,
-//         top:25,
-//        left:42,
-      
-     
-//     },
-   
-//     imageText: {
-//         position: 'absolute',
-//         left: 80,
-//         top: 50, 
-//         fontSize: 13,
-//         color: '#868688',
-//     },
-// });
-
-// export default Dropdown;
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Modal, StyleSheet, FlatList } from 'react-native';
+import { View, StyleSheet, Image, Text, TouchableOpacity } from 'react-native';
 
-const Dropdown = () => {
-  const dropdownItems = ['Option 1', 'Option 2', 'Option 3'];
-
-  const [selectedOption, setSelectedOption] = useState(dropdownItems[0]);
-  const [dropdownVisible, setDropdownVisible] = useState(false);
-
+const Dropdown = ({ options, onSelect, imageWidth, imageHeight, imageTop,
+  imageLeft,label,labelLeft,labelTop,selectOptionTop,selectOptionLeft,selectOptionWidth,selectOptionHeight,textMarginLeft,iconWidth,iconHeight,iconLeft,iconTop }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState(options[0]);
   const toggleDropdown = () => {
-    setDropdownVisible(!dropdownVisible);
+    setIsOpen(!isOpen);
   };
-
-  const handleSelect = (item) => {
-    setSelectedOption(item);
-    setDropdownVisible(false);
+  const handleSelect = (option) => {
+    setSelectedOption(option);
+    setIsOpen(false);
+    onSelect(option);
   };
-
-  const DropdownList = () => (
-    <View style={styles.dropdownList}>
-      <FlatList
-        data={dropdownItems}
-        keyExtractor={(item) => item}
-        renderItem={({ item }) => (
-          <TouchableOpacity
-            style={styles.dropdownItem}
-            onPress={() => handleSelect(item)}
-          >
-            <Text>{item}</Text>
-          </TouchableOpacity>
-        )}
-      />
-    </View>
-  );
-
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={toggleDropdown}>
-        <Text style={styles.dropdownToggle}>
-          {selectedOption}  Click
-        </Text>
-      </TouchableOpacity>
+      {/* Background image */}
+      <Image source={require('../assets/input-Login-removebg-preview.png')}
+        style={{ width: imageWidth, height: imageHeight, left: imageLeft, top: imageTop }}
+        resizeMode="cover" />
 
-      <Modal
-        transparent={true}
-        visible={dropdownVisible}
-        animationType="slide"
-        onRequestClose={() => setDropdownVisible(false)}
-      >
-        <View style={styles.modal}>
-          {dropdownVisible && <DropdownList />}
+      <View style={{ zIndex: 1 }}>
+        <View style={[styles.selectOption,{top: selectOptionTop, left: selectOptionLeft, width: selectOptionWidth, height: selectOptionHeight}]}>
+          <Text style={{marginLeft: textMarginLeft, color: '#FFFFFF' }}>{selectedOption}</Text>
+          <TouchableOpacity onPress={toggleDropdown}>
+            <Image
+              source={require('../assets/icon-whitechevron.png')}
+              style={{width: iconWidth, height:iconHeight, left: iconLeft, top: iconTop}} />
+          </TouchableOpacity>
         </View>
-      </Modal>
+
+        {isOpen && (
+          <View style={{ position: 'absolute' }}>
+            {options.map((option, index) => (
+              <View style={styles.container1}>
+                <TouchableOpacity key={index} onPress={() => handleSelect(option)}>
+                  <Text style={styles.option}> {option}</Text>
+                </TouchableOpacity>
+              </View>
+            ))}
+          </View>
+        )}
+      </View>
+      {/* Label for the Dropdown */}
+      <View style={{ marginLeft: labelLeft, marginTop: labelTop }}>
+        <Text style={{ fontSize: 16, color: '#5B5B5D' }}>{label}</Text>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    marginTop: 15,
   },
-  dropdownToggle: {
-    padding: 10,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 5,
+  selectOption:{
+    flexDirection: 'row',
+     alignItems: 'center',
+      backgroundColor: '#7152C5',
+      borderRadius: 10,
   },
-  modal: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+  container1: {
+    padding: 5,
+    marginTop: 0.5,
+    backgroundColor: '#7152C5',
+    borderBottomRightRadius: 5,
+    borderBottomLeftRadius: 5,
+    top: 10,
+    left: 187,
+    height: 30,
+    width: 170,
   },
-  dropdownList: {
-    position: 'absolute',
-    top: 60, // Adjust the top position to align with the selected option
-    right: 10, // Adjust the right position if needed
-    backgroundColor: 'white',
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 5,
-    padding: 10,
-    zIndex: 1,
-  },
-  dropdownItem: {
-    padding: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
-    alignItems: 'center',
+  option: {
+    color: '#FFFFFF',
+    marginLeft: 29,
   },
 });
 

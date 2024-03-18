@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Image, Text, StyleSheet } from 'react-native';
 import LikeIcon from '../icons/LikeIcon';
-import Offers from '../components/Offers';
-import Bar from '../components/Bar';
+import Offers from './Offers';
+import Bar from './Bar';
 const BagBox = () => {
   return (
     <View style={styles.container}>

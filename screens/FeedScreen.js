@@ -1,21 +1,20 @@
 import React from 'react';
 import { View, StyleSheet, Alert, Image, Text } from 'react-native';
-
 import HeaderWithSearchBar from '../components/HeaderWithSearchBar';
 import FeedBody from '../components/FeedBody';
 
 const FeedScreen = () => {
- 
+
   return (
     <View style={styles.container}>
-     <HeaderWithSearchBar/>
-     <FeedBody/>
+      <HeaderWithSearchBar />
+      <FeedBody />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: 
+  container:
   {
     flex: 1,
     alignItems: 'center',

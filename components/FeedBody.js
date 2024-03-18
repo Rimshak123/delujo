@@ -14,6 +14,7 @@ const FeedBody = () => {
         <ScrollView style={styles.mainContainer}>
         <Banners
           bannerImagePath={require('../assets/banner001.png')}
+          // bannerText='amna'
           boxImagePath={require('../assets/ilustracion01.png')}
         />
         <Text style={styles.text1}>See more bundles</Text>

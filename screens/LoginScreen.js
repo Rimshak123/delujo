@@ -14,8 +14,10 @@ const LoginScreen = () => {
         showImage={true}
         headerTextSize={18}
         customText="Welcome to Delujo"
-        imagePath={require('../assets/DeLujo-Logo.png')}
+        imagePath1={require('../assets/DeLujo-Logo.png')}
         headerFlex={0.2} 
+        imageWidth={65} 
+        imageHeight={55}
       />
       <LoginBody />
     </View>

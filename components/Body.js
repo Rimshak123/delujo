@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import BagBox from '../components/BagBox';
+import BagBox from './BagBox';
 //import FooterDetail from '../components/FooterDetail';
 
 const Body = () => {
@@ -19,7 +19,6 @@ const Body = () => {
       <Text style={styles.secondaryText}>
         Stuff you are selling      </Text>
       <BagBox />
-    {/* //  <FooterDetail/> */}
     </View>
   );
 };
@@ -31,20 +30,20 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
     // backgroundColor: "#F0F0F0",
-        backgroundColor: "#F3F3F3",
+    backgroundColor: "#F3F3F3",
 
     borderTopLeftRadius: 65,
     borderTopRightRadius: 65,
   },
-  
+
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     width: '100%',
     // padding: 40,
-    paddingTop:50,
-    paddingLeft:40,
+    paddingTop: 50,
+    paddingLeft: 40,
   },
   headerText: {
     fontSize: 20,
@@ -54,13 +53,12 @@ const styles = StyleSheet.create({
   topRightText: {
     fontSize: 14,
     color: "#ADADAD",
-    paddingRight:30,
+    paddingRight: 30,
   },
   secondaryText: {
-    fontSize: 16,  // Different font size for the secondary text
-    color: "#7051C4",  // You can customize the color as needed
-   // marginTop: 7, 
-paddingLeft:40,
+    fontSize: 16, 
+    color: "#7051C4",
+    paddingLeft: 40,
   },
 });
 
