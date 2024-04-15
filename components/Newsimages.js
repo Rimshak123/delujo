@@ -30,8 +30,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginVertical: 10,
     paddingHorizontal: 20,
+<<<<<<< HEAD
     marginTop:-300,
     marginBottom:100,
+=======
+    marginTop:-200,
+>>>>>>> e1b9dfd53ff360d1eea30142a0703b0f64471443
     
   },
   profileImage: {

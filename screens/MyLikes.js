@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+<<<<<<< HEAD
 import Header from '../components/Header'
 import Mylikesbody from '../components/Mylikesbody'
 const MyLikes = () => {
@@ -33,3 +34,22 @@ const styles = StyleSheet.create({
     backgroundColor: '#7050C3',
   },
 });
+=======
+import Mylikesheader from '../components/Mylikesheader'
+import Mylikesbody from '../components/Mylikesbody'
+import Mylikesfooter from '../components/Mylikesfooter'
+const MyLikes = () => {
+  return (
+    <View style={styles.container}>
+    <Mylikesheader/>
+    <Mylikesbody/>
+    <Mylikesfooter/>
+     
+ </View>
+  )
+}
+
+export default MyLikes
+
+const styles = StyleSheet.create({})
+>>>>>>> e1b9dfd53ff360d1eea30142a0703b0f64471443

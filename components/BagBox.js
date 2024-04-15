@@ -1,13 +1,18 @@
 import React from 'react';
 import { View, Image, Text, StyleSheet } from 'react-native';
 import LikeIcon from '../icons/LikeIcon';
+<<<<<<< HEAD
 import Offers from './Offers';
 import Bar from './Bar';
+=======
+import Offers from '../components/Offers';
+>>>>>>> e1b9dfd53ff360d1eea30142a0703b0f64471443
 const BagBox = () => {
   return (
     <View style={styles.container}>
       <View style={styles.textContainer}>
         <Text style={styles.text}>
+<<<<<<< HEAD
           Thule Paramount</Text>
         <Text style={styles.text2}>
           You put this on sale 5 days ago</Text>
@@ -39,6 +44,24 @@ const BagBox = () => {
       
      
       
+=======
+          Thule Paramount        </Text>
+        <Text style={styles.text2}>
+          You put this on sale 5 days ago  </Text>
+         
+        <Offers />
+        
+      </View>
+      
+     
+      
+      <View style={styles.bottonbar}></View>
+      <Image
+        source={require('../assets/mochila001.png')} // Replace with your actual image path
+        style={styles.image}
+        resizeMode="cover"
+      />
+>>>>>>> e1b9dfd53ff360d1eea30142a0703b0f64471443
 
     </View>
   );
@@ -62,6 +85,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     justifyContent: 'flex-start',
     marginTop: 15,
+<<<<<<< HEAD
     marginRight: 65,
   },
   dotscircle:{
@@ -112,10 +136,34 @@ const styles = StyleSheet.create({
   },
   image: {
     marginLeft: 5,
+=======
+    marginRight: 30,
+
+  },
+  text: {
+    fontSize: 13,
+    color: '#333', // Adjust the color as needed
+  },
+  text2: {
+    fontSize: 12,
+    color: '#888888', // Adjust the color as needed
+  },
+ 
+  
+  text3: {
+    fontSize: 14,
+    color: '#333',
+    fontWeight:"bold",
+   
+  },
+  image: {
+    marginLeft: 10,
+>>>>>>> e1b9dfd53ff360d1eea30142a0703b0f64471443
     width: '35.8%',
     height: '85.4%',
     marginBottom: 12,
   },
+<<<<<<< HEAD
   imagebar: {
     position:'absolute',
     marginLeft: 15,
@@ -127,6 +175,9 @@ const styles = StyleSheet.create({
   },
  
   bottombar: {
+=======
+  bottonbar: {
+>>>>>>> e1b9dfd53ff360d1eea30142a0703b0f64471443
     position: 'absolute',
     bottom: 0,
     left: 0,
@@ -138,9 +189,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#7252C5',
     justifyContent: 'center',
     alignItems: 'center',
+<<<<<<< HEAD
    
   },
  
+=======
+  },
+>>>>>>> e1b9dfd53ff360d1eea30142a0703b0f64471443
 });
 
 export default BagBox;

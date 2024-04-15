@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+<<<<<<< HEAD
 import Profilebody1 from '../components/Profilebody1'
 import Header from '../components/Header'
 const MyProfile = () => {
@@ -44,6 +45,16 @@ const MyProfile = () => {
         imagePath3={require('../assets/icon-threPoints.png')}
       />
       <Profilebody1 />
+=======
+import Profileheader from '../components/Profileheader'
+import Profilebody from '../components/Profilebody'
+//import Profilefooter from '../components/Profilebody'
+const MyProfile = () => {
+  return (
+    <View style={styles.container}>
+       <Profileheader/>
+        
+>>>>>>> e1b9dfd53ff360d1eea30142a0703b0f64471443
     </View>
   )
 }
@@ -51,10 +62,13 @@ const MyProfile = () => {
 export default MyProfile
 
 const styles = StyleSheet.create({
+<<<<<<< HEAD
   container:
   {
     backgroundColor: "#7051C4",
   },
 
+=======
+>>>>>>> e1b9dfd53ff360d1eea30142a0703b0f64471443
 
 })

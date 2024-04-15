@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 import React, { useState } from 'react';
 import { View, TextInput, StyleSheet , Image, TouchableOpacity} from 'react-native';
@@ -27,10 +28,29 @@ const SearchBar = ({ onSearch , onIconPress }) => {
           style={styles.icon}
         />
       </TouchableOpacity>
+=======
+// SearchBar.js
+
+import React from 'react';
+import { View } from 'react-native';
+import { SearchBar as RNESearchBar } from 'react-native-elements';
+
+const SearchBar = ({ onChangeText, onClear, onSubmitEditing }) => {
+  return (
+    <View>
+      <RNESearchBar
+        placeholder="Search..."
+        onChangeText={onChangeText}
+        onClear={onClear}
+        onSubmitEditing={onSubmitEditing}
+        containerStyle={{ flex: 1, marginRight: 10 }}
+      />
+>>>>>>> e1b9dfd53ff360d1eea30142a0703b0f64471443
     </View>
   );
 };
 
+<<<<<<< HEAD
 const styles = StyleSheet.create({
   container: {
     width:220,
@@ -87,3 +107,6 @@ export default SearchBar;
 
 // export default SearchBar;
 
+=======
+export default SearchBar;
+>>>>>>> e1b9dfd53ff360d1eea30142a0703b0f64471443

@@ -4,6 +4,7 @@
 
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
+<<<<<<< HEAD
 import Header from '../components/Header'; 
 // import LoginBody from '../components/Body/LoginBody';
 import LoginBody from '../components/LoginBody';
@@ -25,6 +26,16 @@ const LoginScreen = () => {
       />
       <LoginBody />
       
+=======
+import WelcomeToDelujo from '../components/WelcomeToDelujo'; 
+import LoginBody from '../components/LoginBody';
+
+const LoginScreen = () => {
+  return (
+    <View style={styles.container}>
+      <WelcomeToDelujo/>
+      <LoginBody />
+>>>>>>> e1b9dfd53ff360d1eea30142a0703b0f64471443
     </View>
   );
 };
@@ -38,7 +49,10 @@ const styles = StyleSheet.create({
   },
 });
 
+<<<<<<< HEAD
 LoginScreen.options = {
   headerShown: false,
 };
+=======
+>>>>>>> e1b9dfd53ff360d1eea30142a0703b0f64471443
 export default LoginScreen;

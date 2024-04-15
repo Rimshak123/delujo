@@ -1,20 +1,10 @@
 import React from 'react';
-<<<<<<< HEAD
-import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
-import NormalButton from './NormalButton';
-
-const Footer = ({  onLaterPress,text }) => {
-  return (
-    <View style={styles.container}>
-      <NormalButton title="Next" width={140} height={40} borderRadius={20} marginTop={-20} backgroundColor='#7E4FFE' />
-      <TouchableOpacity style={[styles.laterButton]} onPress={onLaterPress}>
-        <Text style={[styles.laterButtonText]}>{text}</Text>
-      </TouchableOpacity>
-=======
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
-const Footer = () => {
+const Mylikesfooter = () => {
+   
   return (
+   
     <View style={styles.footerContainer}>
       <Image
         source={require('../assets/footer-base.png')}
@@ -60,41 +50,21 @@ const Footer = () => {
             style={styles.icon5}
           />
           <Text style={styles.iconText}>Profile</Text>
+         
         </TouchableOpacity>
       </View>
->>>>>>> e1b9dfd53ff360d1eea30142a0703b0f64471443
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-<<<<<<< HEAD
-  container: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: -220,
-    height: 230,
-    width: 400,
-    backgroundColor: '#F3F3F3',
-    borderTopRightRadius: 70,
-    borderTopLeftRadius: 70,
-  },
-  laterButton: {
-    marginTop: 20,
-    alignSelf: 'center',
-    borderBottomColor: '#7E4FFE',
-    borderBottomWidth: 1.5,
-  },
-  laterButtonText: {
-    color: '#7E4FFE',
-    fontSize: 16,
-=======
   footerContainer: {
     position: 'absolute',
     bottom: 0,
     left: 0,
     right: 0,
     backgroundColor: 'transparent',
+    marginBottom:35,
   },
   backgroundImage: {
     width: '100%',
@@ -128,7 +98,7 @@ const styles = StyleSheet.create({
     marginBottom: 2,
   },
   icon4: {
-    width: 29,
+    width: 24,
     height: 32,
     marginTop: 9,
   },
@@ -164,8 +134,7 @@ const styles = StyleSheet.create({
     borderRadius: 35,
     backgroundColor:'#7252C5',
     zIndex: -1,
->>>>>>> e1b9dfd53ff360d1eea30142a0703b0f64471443
   },
 });
 
-export default Footer;
+export default Mylikesfooter;

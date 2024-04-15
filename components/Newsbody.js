@@ -1,11 +1,19 @@
 import React from 'react';
 import { StyleSheet, View, Text,TouchableOpacity,Image } from 'react-native';
+<<<<<<< HEAD
 
+=======
+import Shopheader from './Shopheader';
+>>>>>>> e1b9dfd53ff360d1eea30142a0703b0f64471443
 import Newsimages from '../components/Newsimages';
 
 const Newsbody = () => {
   return (
     <View style={styles.container}>
+<<<<<<< HEAD
+=======
+      <Shopheader />
+>>>>>>> e1b9dfd53ff360d1eea30142a0703b0f64471443
       <View style={styles.newsContainer}>
         <Text style={styles.newsTitle}>News</Text>
         <View style={styles.horizontalList}>
@@ -24,7 +32,11 @@ const Newsbody = () => {
        
       </View>  
       <View style={styles.newcontainer}>
+<<<<<<< HEAD
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', width:400,  }}>
+=======
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+>>>>>>> e1b9dfd53ff360d1eea30142a0703b0f64471443
       {/* Use the ProfileCard component */}
       <Newsimages
         imageSource={require('../assets/profile-pic.png')}
@@ -54,6 +66,7 @@ const Newsbody = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+<<<<<<< HEAD
     borderTopRightRadius:70,
     borderTopLeftRadius:70,
     justifyContent: 'center',
@@ -85,6 +98,30 @@ height:790,
     left:165,
     // marginBottom:15,
     marginTop:80,
+=======
+  },
+  newcontainer:{
+backgroundColor:'#dcdcdc',
+//height:50,
+marginTop:60,
+  },
+  newsContainer: {
+    backgroundColor: '#f3f3f3', 
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+    height:700,
+    borderTopRightRadius:70,
+    borderTopLeftRadius:70,
+    marginTop:-100,
+  },
+  newsTitle: {
+    marginBottom:-50,
+    //alignContent:'center',
+    marginRight:10,
+    fontSize: 24,
+    marginBottom:10,
+>>>>>>> e1b9dfd53ff360d1eea30142a0703b0f64471443
     fontWeight: 'bold',
     color: '#7252C5', // Text color for news title
   },
