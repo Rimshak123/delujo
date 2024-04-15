@@ -1,6 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-// import Mylikesheader from '../components/Mylikesheader'
 import Header from '../components/Header'
 import Mylikesbody from '../components/Mylikesbody'
 const MyLikes = () => {

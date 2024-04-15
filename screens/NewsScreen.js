@@ -8,8 +8,6 @@ const NewsScreen = () => {
     <View style={styles.container}>
       <HeaderWithSearchBar/>
       <Newsbody/>
-            {/* // <Shopheader /> */}
-
     </View>
   )
 }

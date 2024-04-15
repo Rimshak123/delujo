@@ -1,13 +1,13 @@
 
 import React from 'react';import { View, Text, StyleSheet } from 'react-native';
 import HeaderWithSearchBar from '../components/HeaderWithSearchBar';
-import Body from '../components/Body';
+// import Body from '../components/Body';
 
 const MyBundles = () => {
   return (
     <View style={styles.container}>
       <HeaderWithSearchBar/>
-      <Body />  
+      {/* <Body />   */}
     </View>
   );
 };

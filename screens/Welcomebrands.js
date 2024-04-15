@@ -1,23 +1,25 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import Welcomebackground from '../components/Welcomebackground'
-import Welcomefooter from '../components/Welcomefooter'
+import Footer from '../components/Footer'
 
 const Welcomebrands = () => {
   return (
     <View style={styles.newcontainer}>
       <Welcomebackground
         heading="Follow 3 Brands"
-        smallheading="You love!"
-        discription="This will help us to make better suggestions"
-        discription1="for you in a future"
+         heading2="You love!"
+        text="This will help us to make better suggestions for you in a future"
         imageSource={require('../assets/zara.jpg')}
         imageSource2={require('../assets/adidas.jpg')}
         imageSource3={require('../assets/nike.jpg')}
         imageSource4={require('../assets/mkkk.jpg')}
         
       />
-    <Welcomefooter/>
+   
+    <Footer
+    text='Do it later'
+    />
     </View>
   );
 }

@@ -1,12 +1,11 @@
 import React from 'react';
 import { StyleSheet, View, Text,TouchableOpacity,Image } from 'react-native';
-import Shopheader from './Shopheader';
+
 import Newsimages from '../components/Newsimages';
 
 const Newsbody = () => {
   return (
     <View style={styles.container}>
-      {/* <Shopheader /> */}
       <View style={styles.newsContainer}>
         <Text style={styles.newsTitle}>News</Text>
         <View style={styles.horizontalList}>
@@ -85,7 +84,7 @@ height:790,
     fontSize: 24,
     left:165,
     // marginBottom:15,
-    marginTop:20,
+    marginTop:80,
     fontWeight: 'bold',
     color: '#7252C5', // Text color for news title
   },

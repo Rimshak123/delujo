@@ -15,13 +15,16 @@ const ProfileBody = () => {
   const MyLikes = () => {
     navigation.navigate('MyLikes');
   };
+  const FindFriend = () => {
+    navigation.navigate('Findfriend');
+  };
   return (
     <ScrollView contentContainerStyle={styles.scrollViewContainer}>
       <View style={styles.container}>
         <Text style={styles.textSocial}>Social</Text>
         <ButtonProfile text="Your Guide to DeLujo" marginTop={70} imageLeft={90} imageRight={85} />
         <ButtonProfile text="Refer and earn cash!" marginTop={130} imageLeft={90} imageRight={87} />
-        <ButtonProfile text="Find people" marginTop={190} imageLeft={115} imageRight={110} />
+        <ButtonProfile text="Find people" onPress={FindFriend} marginTop={190} imageLeft={115} imageRight={110} />
         <Text style={styles.textMystore}>My store</Text>
         <ButtonProfile text="My Clothes" marginTop={305} imageLeft={118} imageRight={110} />
         <ButtonProfile text="My Bundles" onPress={MyBundles}  marginTop={365} imageLeft={118} imageRight={110} />

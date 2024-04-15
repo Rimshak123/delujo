@@ -1,26 +1,27 @@
-// SimpleTextComponent.js
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { StyleSheet, ScrollView, Text, View } from 'react-native'
+import React from 'react'
+import HeaderWithSearchBar from '../components/HeaderWithSearchBar'
+import Sellbody from '../components/Sellbody'
 
 const SellScreen = () => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Sell Screen</Text>
-    </View>
-  );
-};
+    
+      <View style={styles.container}>
+        <HeaderWithSearchBar />
+        <Sellbody />
+      </View>
+    
+  )
+}
+
+export default SellScreen
 
 const styles = StyleSheet.create({
+ 
   container: {
-    justifyContent: 'center',
-    alignItems: 'center',
     flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: "#7252C5",
   },
-  text: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: 'black',
-  },
-});
-
-export default SellScreen;
+})

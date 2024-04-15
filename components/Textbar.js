@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, Image, Text, TextInput } from 'react-native';
 
-const Textbar = ({ imagePath, labelText, placeholder, handleInputChange, value ,textbarMarginTop,textbarMarginLeft,labelLeft}) => {
+const Textbar = ({ imagePath, labelText, placeholder, handleInputChange ,textbarMarginTop,textbarMarginLeft,labelLeft,textSize,
+  autoComplete,keyboardType,secureTextEntry=false, value,setValue}) => {
     return (
       <View style={{ marginTop: textbarMarginTop,marginLeft: textbarMarginLeft  }}>
         <Image source={imagePath} style={styles.image} resizeMode="cover" />
-        <Text style={[styles.imageText,{ left:labelLeft}]}>{labelText}</Text>
+        <Text style={[styles.imageText,{ left:labelLeft, fontSize:textSize}]}>{labelText}</Text>
         <View style={styles.textInput}>
           <TextInput
             style={styles.input}
             placeholder={placeholder}
-            onChangeText={handleInputChange}
+            onChangeText={(text)=> setValue(text)}
             value={value}
+          //  onChangeText={(text)=> setValue(text)}
+            keyboardType={keyboardType}
+            secureTextEntry={secureTextEntry}   // For Password  
           />
         </View>
       </View>
@@ -34,7 +38,7 @@ const styles = StyleSheet.create({
     },
     imageText: {
         position: 'absolute',
-        // left: 33,
+        //  left: 33,
         bottom: 55, 
         fontSize: 11,
         color: '#868688',

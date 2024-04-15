@@ -1,20 +1,22 @@
-// SimpleTextComponent.js
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-
-const ShopScreen = ({ text }) => {
+import Newsbody from '../components/Newsbody'
+import HeaderWithSearchBar from '../components/HeaderWithSearchBar'
+import Shopbody from '../components/Shopbody';
+const ShopScreen = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Shop Screen</Text>
-    </View>
+    <HeaderWithSearchBar />
+    <Shopbody/>
+
+  </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: 'center',
-    alignItems: 'center',
     flex: 1,
+    backgroundColor: '#7050C3',
   },
   text: {
     fontSize: 18,
@@ -22,9 +24,5 @@ const styles = StyleSheet.create({
     color: 'black',
   },
 });
-
-ShopScreen.options = {
-  headerShown: false,
-};
 
 export default ShopScreen;
