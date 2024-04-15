@@ -5,9 +5,13 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import Header from '../components/Header'; 
+// import LoginBody from '../components/Body/LoginBody';
 import LoginBody from '../components/LoginBody';
+// import { useNavigation } from '@react-navigation/native';
 
 const LoginScreen = () => {
+ 
+
   return (
     <View style={styles.container}>
       <Header
@@ -20,6 +24,7 @@ const LoginScreen = () => {
         imageHeight={55}
       />
       <LoginBody />
+      
     </View>
   );
 };
@@ -33,4 +38,7 @@ const styles = StyleSheet.create({
   },
 });
 
+LoginScreen.options = {
+  headerShown: false,
+};
 export default LoginScreen;

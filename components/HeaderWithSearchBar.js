@@ -16,7 +16,7 @@ const HeaderWithSearchBar = ({ onHamburgerPress, onAddFriendPress, onLikePress, 
       </View>
       <SearchBar onSearch={onSearch} />
       <View style={[styles.iconContainer]}>
-        <AddFriendIcon onPress={onAddFriendPress} />
+        <AddFriendIcon  />
       </View>
      
       <View style={[styles.iconContainer]}>
@@ -32,7 +32,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#7050C3',
     paddingVertical: 10,
-    //paddingHorizontal: 0,
     paddingTop: 40,
     paddingBottom:15,
     width:'100%',

@@ -2,7 +2,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-const ShopScreen = ({ text }) => {
+const ShopScreen = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Shop Screen</Text>
@@ -22,9 +22,5 @@ const styles = StyleSheet.create({
     color: 'black',
   },
 });
-
-ShopScreen.options = {
-  headerShown: false,
-};
 
 export default ShopScreen;

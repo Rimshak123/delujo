@@ -1,10 +1,15 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import RatingWhiteStars from './RatingWhiteStars';
+// import { useNavigation } from '@react-navigation/native';
+
 
 const Header = ({ headerTextSize, customText,customTextMarginTop, headerTextWeight, headerFlex, imagePath1, imagePath2, imagePath3, imagePath4, onImage2Press, textTop, imageWidth, imageHeight, imageTop,
   imageLeft, imageWidth2, imageLeft2, imageHeight2, imageTop2, imageWidth3, imageLeft3, imageHeight3, imageTop3, imageWidth4, imageLeft4, imageHeight4, imageTop4, Username, Level, location, 
-  showRating, textFontSize, textColor, usernameMarginTop,usernameMarginLeft,textMarginTop,textMarginLeft,margintop,marginleft,FontSize,Color }) => {
+  showRating, textFontSize, textColor, userTextWeight,usernameMarginTop,usernameMarginLeft,textMarginTop,textMarginLeft,margintop,marginleft,FontSize,Color,onPress }) => {
+    // const navigation = useNavigation();
+
+  
   return (
     <View style={[styles.container, { flex: headerFlex }]}>
       <View style={[styles.containertext, { top: textTop }]}>
@@ -18,7 +23,7 @@ const Header = ({ headerTextSize, customText,customTextMarginTop, headerTextWeig
           style={{ width: imageWidth, height: imageHeight, left: imageLeft, top: imageTop }}
           resizeMode="cover" />
         <View style={{ alignItems: 'center', left: -10 }}>
-          <Text style={[styles.imageText, { fontSize: 16, marginTop:usernameMarginTop,marginLeft:usernameMarginLeft }]}>{Username}</Text>
+          <Text style={[styles.imageText, { fontSize: 16,fontWeight:userTextWeight ,marginTop:usernameMarginTop,marginLeft:usernameMarginLeft }]}>{Username}</Text>
           <View style={{ marginBottom: 12, }}></View>
           {showRating && (
             <View style={{ flexDirection: 'row', marginBottom: 2, }}>
@@ -63,7 +68,8 @@ const Header = ({ headerTextSize, customText,customTextMarginTop, headerTextWeig
         <Image
           source={imagePath4}
           style={{ width: imageWidth4, height: imageHeight4, left: imageLeft4, top: imageTop4 }}
-          resizeMode="cover" />
+          resizeMode="cover" 
+          />
       </TouchableOpacity>
 
     </View>

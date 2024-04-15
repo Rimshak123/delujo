@@ -1,10 +1,10 @@
-// BodySection.js
+
 
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import BagBox from './BagBox';
 //import FooterDetail from '../components/FooterDetail';
-
+// bundles Screen
 const Body = () => {
   return (
     <View style={styles.bodyContainer}>
@@ -29,9 +29,7 @@ const styles = StyleSheet.create({
     //padding: 40,
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
-    // backgroundColor: "#F0F0F0",
     backgroundColor: "#F3F3F3",
-
     borderTopLeftRadius: 65,
     borderTopRightRadius: 65,
   },

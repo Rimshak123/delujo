@@ -1,12 +1,11 @@
 import React from 'react';
 import { StyleSheet, View, Text,TouchableOpacity,Image } from 'react-native';
-import Shopheader from './Shopheader';
+
 import Newsimages from '../components/Newsimages';
 
 const Newsbody = () => {
   return (
     <View style={styles.container}>
-      {/* <Shopheader /> */}
       <View style={styles.newsContainer}>
         <Text style={styles.newsTitle}>News</Text>
         <View style={styles.horizontalList}>

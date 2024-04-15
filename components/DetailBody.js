@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, Text, Image, ScrollView, SafeAreaView } from 'react-native';
-import NormalButton from '../components/NormalButton';
-import Rating from '../components/Rating';
+import NormalButton from './NormalButton';
+import Rating from './Rating';
 
 const Detailscroll = () => {
   return (
