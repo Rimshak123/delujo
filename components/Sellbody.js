@@ -7,312 +7,447 @@ import {
   TextInput,
   StyleSheet,
   TouchableOpacity,
+  Button,
 } from "react-native";
-import NormalButton from "./NormalButton";
+import UploadImage from "../components/UploadImage";
+
+import axios from "axios";
 
 const Sellbody = () => {
-  const [leftButtonPressed, setLeftButtonPressed] = useState(false);
-  const [rightButtonPressed, setRightButtonPressed] = useState(false);
+  const [inputText, setInputText] = useState("");
+  const [productDetail, setDetails] = useState("");
+  const [quantity, setQuantity] = useState("");
+  const [originalPrice, setOriginalPrice] = useState("");
+  const [listingPrice, setListingPrice] = useState("");
+  const [priceDescription, setPriceDescription] = useState("");
+  const [size, setSize] = useState("");
+  const [height, setHeight] = useState("");
+  const [width, setWidth] = useState("");
+  const [tag, setTag] = useState("");
+  const [ownerName, setOwnerName] = useState("");
+  const [ownerEmail, setOwnerEmail] = useState("");
+  const earnedPrice = listingPrice - originalPrice;
+  const handleSaveData = async () => {
+    try {
+      await axios.post("http://192.168.18.19:5000/api/items/save", {
+        product: inputText,
+        description: productDetail,
+        quantity: quantity,
+        originalPrice: originalPrice,
+        listingPrice: listingPrice,
+        earnedPrice: earnedPrice,
+        priceDescription: priceDescription,
+        size: size,
+        height: height,
+        width: width,
+        tag: tag,
+        ownerName:ownerName,
+        ownerEmail:ownerEmail,
+      });
+      console.log("Data saved successfully");
+    } catch (error) {
+      console.error("Error saving data:", error);
+    }
+  };
+  const [type, setType] = useState(null); // State to track whether 'Animal' or 'Bird' button is pressed
+  const [leg, setLegs] = useState('');
+  const [eat, seteat] = useState('');
+  const [peak, setPeak] = useState('');
+  const [kind, setKind] = useState('');
+
+  const handleAnimalPress = () => {
+    setType('Animal');
+  };
+
+  const handleBirdPress = () => {
+    setType('Bird');
+  };
+
+  const renderAnimalInputs = () => (
+    <View>
+      <TextInput
+        placeholder="Enter number of legs"
+        value={height}
+        onChangeText={text => setHeight(text)}
+      />
+      <TextInput
+        placeholder="Enter the Feed"
+        value={width}
+        onChangeText={text => setWidth(text)}
+      />
+    </View>
+  );
+
+  const renderBirdInputs = () => (
+    <View style={{marginLeft:-280}}>
+      <TextInput
+        placeholder="Enter peak"
+        value={peak}
+        onChangeText={text => setPeak(text)}
+      />
+      <TextInput
+        placeholder="Enter kind"
+        value={kind}
+        onChangeText={text => setKind(text)}
+      />
+    </View>
+  );
+  const handleSinglePress = () => {
+    setQuantity("Single");
+  };
+  const handleMultiplePress = () => {
+    setQuantity("Multiple");
+  };
+  const handleYesTag = () => {
+    setTag("Yes");
+  };
+  const handleNoTag = () => {
+    setTag("No");
+  };
+  const handleSizeSmall = () => {
+    setSize("Small");
+  };
+  const handleSizeMedium = () => {
+    setSize("Medium");
+  };
+  const handleSizeLarge = () => {
+    setSize("Large");
+  };
+  const handleSizeExtraLarge = () => {
+    setSize("Extra Large");
+  };
 
   return (
-    <ScrollView contentContainerStyle={styles.scrollView}>
+  
+
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View style={styles.container}>
         <View style={styles.sellBody}>
-          {/* Heading */}
           <Text style={styles.sellHeading}>Sell</Text>
-
-          {/* Title */}
           <Text style={styles.sellTitle}>
-            Make your clients fall in love with some pictures
+            Make your clients fall in love with some pictures{" "}
           </Text>
 
-          <ScrollView horizontal={true}  showsHorizontalScrollIndicator={false} style={styles.imageContainer}>
-            <TouchableOpacity onPress={() => handleImagePress("Image 1")}>
+          <ScrollView
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+            style={styles.imageContainer}
+          >
+            {/* <TouchableOpacity>
+              <Image
+                source={require("../assets/image.png")}
+                style={styles.image}
+              />
+            </TouchableOpacity> */}
+            <View style={{ marginLeft: 40 }}>
+              <UploadImage />
+            </View>
+            <View style={{ marginLeft: 50 }}>
+              <UploadImage />
+            </View>
+            <View style={{ marginLeft: 70 }}>
+              <UploadImage />
+            </View>
+            {/* <TouchableOpacity>
               <Image
                 source={require("../assets/image.png")}
                 style={styles.image}
               />
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => handleImagePress("Image 2")}>
+            <TouchableOpacity>
               <Image
                 source={require("../assets/image.png")}
                 style={styles.image}
               />
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => handleImagePress("Image 3")}>
-              <Image
-                source={require("../assets/image.png")}
-                style={styles.image}
-              />
-            </TouchableOpacity>
+            </TouchableOpacity> */}
           </ScrollView>
 
-          {/*Product details */}
-          <Text style={styles.details}>Details</Text>
-          <Text style={styles.text}>What is it?</Text>
-          {/* Description container */}
-          <View style={styles.descriptionContainer}>
-            {/* Description box */}
+          <Text style={styles.productDetail}>Details</Text>
+          <Text style={styles.detail}>What is it?</Text>
+          <View style={styles.detailInput}>
             <TextInput
-              style={styles.descriptionBox}
+              style={styles.detailTextInput}
               placeholder="What are you selling?"
               multiline={true}
+              value={inputText}
+              onChangeText={setInputText}
             />
-
-            {/* Save button */}
-            <TouchableOpacity
-              style={styles.saveButton}
-              onPress={handleSavePress}
-            >
-              <Text style={styles.saveButtonText}>Save</Text>
-            </TouchableOpacity>
+            {/* <TouchableOpacity style={styles.saveData} onPress={handleSaveData}>
+              <Text style={styles.save}>Save</Text>
+            </TouchableOpacity> */}
           </View>
 
-          {/* Details title */}
-          <Text style={styles.description}>Discription</Text>
-
-          {/* Details container with button */}
+          <Text style={styles.description}>Description</Text>
           <View style={styles.detailsContainer}>
-            {/* Details box */}
             <TextInput
               style={styles.detailsBox}
               placeholder="Describe what you are selling,try to make it super interesting so people want to buy it!"
               multiline={true}
+              value={productDetail}
+              onChangeText={setDetails}
             />
-            {/* Button */}
-            <TouchableOpacity
-              style={styles.saveButton2}
-              onPress={handleDetailsButtonPress}
-            >
-              <Text style={styles.saveButtonText}>Save</Text>
-            </TouchableOpacity>
           </View>
         </View>
+        <Text style={{fontSize:20,fontFamily:'bold',color:"#7252C5",marginLeft:-220}} >
+            Select type
+          </Text>
+        <TouchableOpacity style={styles.button} onPress={handleAnimalPress}>
+          <Text style={styles.buttonText}>Animal</Text>
+        </TouchableOpacity>
+        <View style={{marginTop:20,}}></View>
+        <View style={{marginLeft:-250,marginTop:-55}}>
+        <TouchableOpacity style={styles.button} onPress={handleBirdPress}>
+          <Text style={styles.buttonText}>Bird</Text>
+        </TouchableOpacity>
+        </View>
+      {type === 'Animal' && renderAnimalInputs()}
+      {type === 'Bird' && renderBirdInputs()}
 
         <Text style={styles.quantityTitle}>Quantity</Text>
         <TouchableOpacity
           style={[styles.leftButton]}
-          onPressIn={() => setLeftButtonPressed(true)}
-          onPressOut={() => setLeftButtonPressed(false)}
+          onPress={handleSinglePress}
         >
-          <Text style={{ color: leftButtonPressed ? "#7252C5" : "#000" }}>
-            Single
-          </Text>
+          <Text style={{ color: "#FFFFFF" }}> Single</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={[styles.rightButton]}
-          onPressIn={() => setRightButtonPressed(true)}
-          onPressOut={() => setRightButtonPressed(false)}
+          onPress={handleMultiplePress}
         >
-          <Text style={{ color: rightButtonPressed ? "#7252C5" : "#000" }}>
-            Multiple
-          </Text>
+          <Text style={{ color: "#000" }}>Multiple</Text>
         </TouchableOpacity>
+
         <Text style={styles.heading}>Pricing</Text>
         <Text style={styles.originalPrice}>Original Price</Text>
-        <TouchableOpacity
-          style={styles.textbox}
-          onPress={() => console.log("Text 1 pressed")}
-        >
+        <View style={styles.textbox}>
           <View style={[styles.left, { backgroundColor: "#ffffff" }]}>
             <TextInput
-              style={styles.text1}
+              style={styles.sizeInput}
               placeholder="40.000"
               multiline={true}
+              value={originalPrice}
+              onChangeText={setOriginalPrice}
             />
           </View>
           <View style={[styles.right, { backgroundColor: "#7252C5" }]}>
-            <Text style={styles.price}>$100</Text>
+            <Text style={{ color: "#FFFFFF" }}>USD</Text>
           </View>
-        </TouchableOpacity>
+        </View>
         <Text style={styles.heading2}>Listing Price</Text>
-        <TouchableOpacity
-          style={styles.textbox}
-          onPress={() => console.log("Text 2 pressed")}
-        >
+        <View style={styles.textbox}>
           <View style={[styles.left, { backgroundColor: "#ffffff" }]}>
             <TextInput
-              style={styles.text1}
-              placeholder="40.000"
+              style={styles.sizeInput}
+              placeholder="30.000"
               multiline={true}
+              value={listingPrice}
+              onChangeText={setListingPrice}
             />
           </View>
           <View style={[styles.right, { backgroundColor: "#7252C5" }]}>
-            <Text style={styles.price}>$200</Text>
+            <Text style={{ color: "#FFFFFF" }}>USD</Text>
           </View>
-        </TouchableOpacity>
+        </View>
         <Text style={styles.heading3}>You earn</Text>
-        <TouchableOpacity
-          style={styles.textbox}
-          onPress={() => console.log("Text 3 pressed")}
-        >
+        <View style={styles.textbox}>
           <View style={[styles.left, { backgroundColor: "#7252C5" }]}>
-            <TextInput
-              style={styles.text2}
-              placeholder="0,00"
-              multiline={true}
-            />
+            <Text style={styles.earnedPrice}> {earnedPrice}</Text>
           </View>
 
           <View style={[styles.right, { backgroundColor: "#7252C5" }]}>
-            <Text style={styles.price}>$300</Text>
+            <Text style={{ color: "#FFFFFF" }}>USD</Text>
           </View>
-        </TouchableOpacity>
-        <Text style={styles.detailsTitle1}>Discription</Text>
+        </View>
+        <Text style={styles.detailsTitle1}>Description</Text>
 
-        {/* Details container with button */}
         <View style={styles.detailsContainer}>
-          {/* Details box */}
           <TextInput
             style={styles.detailsBox}
             placeholder="Describe what you are selling,try to make it super interesting so people want to buy it!"
             multiline={true}
+            value={priceDescription}
+            onChangeText={setPriceDescription}
           />
-          {/* Button */}
-          <TouchableOpacity
-            style={styles.saveButton2}
-            onPress={handleDetailsButtonPress}
-          >
-            <Text style={styles.detailsButtonText}>Save</Text>
-          </TouchableOpacity>
         </View>
         <Text style={styles.heading}>Size</Text>
-        <NormalButton
-          title="Small"
-          width={120}
-          height={40}
-          borderRadius={20}
-          marginTop={-5}
-          left={-70}
-          backgroundColor="#7E4FFE"
-        />
-        <NormalButton
-          title="Medium"
-          width={120}
-          height={40}
-          borderRadius={20}
-          marginTop={-40}
-          left={80}
-          backgroundColor="#d3d3d3"
-        />
-        <NormalButton
-          title="Large"
-          width={120}
-          height={40}
-          borderRadius={20}
-          marginTop={10}
-          left={-70}
-          backgroundColor="#d3d3d3"
-        />
-        <NormalButton
-          title="Extra Large"
-          width={120}
-          height={40}
-          borderRadius={20}
-          marginTop={-40}
-          left={80}
-          backgroundColor="#d3d3d3"
-        />
-        <Text style={styles.heading4}>Height:</Text>
-        <TouchableOpacity
-          style={styles.textbox1}
-          onPress={() => console.log("Text 2 pressed")}
-        >
+        <View style={{ left: -90 }}>
+          <TouchableOpacity onPress={handleSizeSmall}>
+            <View
+              style={{
+                width: 120,
+                height: 40,
+                backgroundColor: "#7E4FFE",
+                borderRadius: 20,
+                marginTop: 15,
+              }}
+            >
+              <Text style={{ color: "#ffffff", marginTop: 10, marginLeft: 40 }}>
+                Small
+              </Text>
+            </View>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={handleSizeLarge}>
+            <View
+              style={{
+                width: 120,
+                height: 40,
+                backgroundColor: "#7E4FFE",
+                borderRadius: 20,
+                marginTop: 15,
+              }}
+            >
+              <Text style={{ color: "#ffffff", marginTop: 10, marginLeft: 40 }}>
+                Large
+              </Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+        <View style={{ left: 80 }}>
+          <TouchableOpacity onPress={handleSizeMedium}>
+            <View
+              style={{
+                width: 120,
+                height: 40,
+                backgroundColor: "#7E4FFE",
+                borderRadius: 20,
+                marginTop: -95,
+              }}
+            >
+              <Text style={{ color: "#ffffff", marginTop: 10, marginLeft: 40 }}>
+                Medium
+              </Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={handleSizeExtraLarge}>
+            <View
+              style={{
+                width: 120,
+                height: 40,
+                backgroundColor: "#7E4FFE",
+                borderRadius: 20,
+                marginTop: -37,
+              }}
+            >
+              <Text style={{ color: "#ffffff", marginTop: 10, marginLeft: 33 }}>
+                Extra Large
+              </Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+        {/* Size */}
+        <Text style={styles.size}>Height:</Text>
+        <View style={styles.sizeTextBox}>
           <View style={[styles.left, { backgroundColor: "#ffffff" }]}>
-            <TextInput style={styles.text1} multiline={true} />
+            <TextInput
+              style={styles.sizeInput}
+              multiline={true}
+              value={height}
+              onChangeText={setHeight}
+            />
           </View>
           <View style={[styles.right, { backgroundColor: "#7252C5" }]}>
-            <Text style={styles.price}>CM</Text>
+            <Text style={{ color: "#ffffff" }}>CM</Text>
           </View>
-        </TouchableOpacity>
-        <Text style={styles.heading4}>Width:</Text>
-        <TouchableOpacity
-          style={styles.textbox1}
-          onPress={() => console.log("Text 2 pressed")}
-        >
+        </View>
+        <Text style={styles.size}>Width:</Text>
+        <View style={styles.sizeTextBox}>
           <View style={[styles.left, { backgroundColor: "#ffffff" }]}>
-            <TextInput style={styles.text1} multiline={true} />
+            <TextInput
+              style={styles.sizeInput}
+              multiline={true}
+              value={width}
+              onChangeText={setWidth}
+            />
           </View>
           <View style={[styles.right, { backgroundColor: "#7252C5" }]}>
-            <Text style={styles.price}>CM</Text>
+            <Text style={{ color: "#ffffff" }}>CM</Text>
           </View>
-        </TouchableOpacity>
+        </View>
+        {/* Tags */}
         <Text style={styles.tags}>Tags</Text>
-        <TouchableOpacity
-          style={[styles.leftButton]}
-          onPressIn={() => setLeftButtonPressed(true)}
-          onPressOut={() => setLeftButtonPressed(false)}
-        >
-          <Text style={{ color: leftButtonPressed ? "#7252C5" : "#000" }}>
-            Yes
-          </Text>
+        <TouchableOpacity style={[styles.leftButton]} onPress={handleYesTag}>
+          <Text style={{ color: "#FFFFFF" }}> Yes</Text>
         </TouchableOpacity>
 
+        <TouchableOpacity style={[styles.rightButton]} onPress={handleNoTag}>
+          <Text style={{ color: "#000" }}>No</Text>
+        </TouchableOpacity>
+
+       
+
+        {/* Owner Information */}
+        <Text style={styles.ownerInformation}>Owner Information</Text>
+        <View style={styles.ownercontainer}>
+        <Text style={styles.size}>Name</Text>
+        <View style={styles.sizeTextBox}>
+          <View style={[styles.left, { backgroundColor: "#ffffff" }]}>
+            <TextInput
+              style={styles.sizeInput}
+              multiline={true}
+               placeholder="Enter name"
+            placeholderTextColor="#808080"
+              value={ownerName}
+              onChangeText={setOwnerName}
+            />
+          </View>
+          
+        </View>
+        
+        <Text style={styles.size}>Email</Text>
+        <View style={styles.sizeTextBox}>
+          <View style={[styles.left, { backgroundColor: "#ffffff" }]}>
+            <TextInput
+              style={styles.sizeInput}
+              multiline={true}
+               placeholder="Enter email"
+            placeholderTextColor="#808080"
+              value={ownerEmail}
+              onChangeText={setOwnerEmail}
+            />
+          </View>
+          
+        </View>
+        </View>
         <TouchableOpacity
-          style={[styles.rightButton]}
-          onPressIn={() => setRightButtonPressed(true)}
-          onPressOut={() => setRightButtonPressed(false)}
+          style={{ alignItems: "center", marginBottom: 35  , backgroundColor: "#7252C5", height:40, width:100, borderRadius:10, marginBottom:50,}}
+          onPress={handleSaveData}
         >
-          <Text style={{ color: rightButtonPressed ? "#7252C5" : "#000" }}>
-            No
-          </Text>
+          <Text style={styles.save}>Save</Text>
         </TouchableOpacity>
-        <Text style={styles.detailsTitle2}>Category</Text>
-        <TouchableOpacity onPress={() => handleImagePress("Image 1")}>
-          <Image
-            source={require("../assets/btn-Mas2.png")}
-            style={styles.image1}
-          />
-        </TouchableOpacity>
-        <Text style={styles.detailsTitle2}>Brand</Text>
-        <TouchableOpacity onPress={() => handleImagePress("Image 1")}>
-          <Image
-            source={require("../assets/btn-Mas2.png")}
-            style={styles.image1}
-          />
-        </TouchableOpacity>
-        <Text style={styles.detailsTitle2}>Color</Text>
-        <TouchableOpacity onPress={() => handleImagePress("Image 1")}>
-          <Image
-            source={require("../assets/btn-Mas2.png")}
-            style={styles.image1}
-          />
-        </TouchableOpacity>
+
+
+        
       </View>
     </ScrollView>
+    
   );
 };
 
-const handleImagePress = (image) => {
-  console.log("Image Pressed:", image);
-};
-
-const handleSavePress = () => {
-  console.log("Save button pressed");
-};
-
-const handleDetailsButtonPress = () => {
-  console.log("Details button pressed");
-};
-
 const styles = StyleSheet.create({
-  scrollView: {
-    flexGrow: 1,
-  },
   container: {
     flex: 1,
     borderTopRightRadius: 60,
     borderTopLeftRadius: 60,
     justifyContent: "center",
     alignItems: "center",
-    width: 400,
     backgroundColor: "#f3f3f3",
+  },
+ button: {
+    backgroundColor: '#7252C5',
+    padding: 10,
+    borderRadius: 10, // Adjust the radius as needed
+    marginHorizontal: 5,
+    width:100,
+  },
+  buttonText: {
+    color: 'white',
+    textAlign: 'center',
   },
   sellBody: {
     marginTop: -140,
-    padding: 1,
-    width: 358,
+    width: 400,
   },
   sellHeading: {
     marginTop: 160,
@@ -325,7 +460,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     textAlign: "center",
     color: "#696969",
-    marginTop:5,
+    marginTop: 5,
   },
   imageContainer: {
     marginTop: 20,
@@ -342,68 +477,56 @@ const styles = StyleSheet.create({
     left: 100,
     top: -25,
   },
-  details: {
+  productDetail: {
     marginTop: 20,
-    marginBottom:18,
+    marginBottom: 18,
     fontSize: 18,
     color: "#7252C5",
     left: 23,
-    fontWeight:'600',
-    
+    fontWeight: "600",
   },
-  descriptionContainer: {
+  detailInput: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
   },
-  descriptionBox: {
+  detailTextInput: {
     height: 100,
     paddingLeft: 15,
     width: 320,
     top: 15,
     left: 15,
-    //marginBottom:10,
     borderColor: "#7252C5",
     borderRadius: 20,
     borderWidth: 1,
-    // marginTop:10,
-    // paddingTop:-20,
   },
   quantityTitle: {
     marginTop: 25,
     fontSize: 16,
     left: -120,
     color: "black",
-    marginBottom:15,
+    marginBottom: 15,
   },
   description: {
     marginTop: 25,
     fontSize: 16,
     left: 23,
     // color: "#696969",
-    color:"black",
-  
+    color: "black",
   },
   detailsTitle1: {
     marginTop: 20,
     fontSize: 18,
     left: -110,
     color: "#696969",
-   
   },
-  detailsTitle2: {
-    marginTop: 20,
-    fontSize: 18,
-    // bottom:-10,
-    left: -110,
-    color: "#696969",
-   
-  },
+ 
 
   detailsContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+    marginBottom: 20,
   },
   tags: {
     color: "#7252C5",
@@ -411,7 +534,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     left: -120,
     fontWeight: "bold",
-  marginBottom:20,
+    marginBottom: 20,
   },
   detailsBox: {
     height: 100,
@@ -423,26 +546,17 @@ const styles = StyleSheet.create({
     width: 320,
     left: 15,
   },
-  saveButton: {
-    marginLeft: -15,
-    padding: 10,
-    borderRadius: 5,
-    marginTop: -110,
-    alignItems: "center",
+  earnedPrice: {
+    color: "#ffffff",
+    marginLeft: -140,
   },
-  saveButtonText: {
-    color: "#7252C5",
-    fontSize: 16,
-    left: -20,
-    fontWeight:"600",
+
+  save: {
+    color: "#ffffff",
+    fontSize: 26,
+    fontWeight: "600",
   },
-  saveButton2: {
-    marginLeft: -15,
-    padding: 10,
-    borderRadius: 5,
-    marginTop: -120,
-    alignItems: "center",
-  },
+
   leftButton: {
     alignItems: "center",
     justifyContent: "center",
@@ -469,7 +583,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 20,
     // marginBottom: 30,
   },
-  text: {
+  detail: {
     top: 5,
     left: 30,
     color: "black",
@@ -482,13 +596,13 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 
-  heading4: {
+  size: {
     left: -130,
     top: 30,
     fontSize: 16,
     color: "#808080",
   },
-  textbox1: {
+  sizeTextBox: {
     flexDirection: "row",
     marginBottom: 10,
     // borderColor:'#7252C5',
@@ -508,7 +622,6 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 10,
     borderBottomLeftRadius: 10,
     padding: 10,
-    // width:10,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -519,13 +632,11 @@ const styles = StyleSheet.create({
     padding: 10,
     alignItems: "center",
     justifyContent: "center",
-    width: 60, // You can specify the width here
+    width: 60,
   },
-  price: {
-    color: "#ffffff",
-  },
-  text1: {
-    color: "#d3d3d3",
+
+  sizeInput: {
+    color: "#000",
     marginLeft: -120,
   },
   text2: {
@@ -551,6 +662,28 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marginLeft: 30,
   },
+
+  ownercontainer: {
+    width: "85%",
+    padding: 25,
+    borderRadius: 10,
+    borderColor: "#7252C5",
+    borderWidth: 1.5,
+    backgroundColor: "#f3f3f3",
+    alignItems: "center",
+    marginBottom:50,
+  },
+  ownerInformation: {
+    color: "#7252C5",
+    marginTop: 20,
+    fontSize: 22,
+    left: -70,
+    fontWeight: "bold",
+    marginBottom: 20,
+  },
+
 });
 
 export default Sellbody;
+
+  

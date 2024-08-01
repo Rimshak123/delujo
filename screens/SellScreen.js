@@ -7,7 +7,7 @@ const SellScreen = () => {
   return (
     
       <View style={styles.container}>
-        <HeaderWithSearchBar />
+        {/* <HeaderWithSearchBar /> */}
         <Sellbody />
       </View>
     

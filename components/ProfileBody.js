@@ -1,47 +1,67 @@
 import React from 'react';
-import { View, StyleSheet, Text, ScrollView,TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Text, ScrollView, TouchableOpacity, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import ButtonProfile from './ButtonProfile';
 
 const ProfileBody = () => {
   const navigation = useNavigation();
 
-  const MyBundles = () => {
-    navigation.navigate('MyBundles');
+  const GuideScreen = () => {
+    navigation.navigate('GuideScreen');
   };
-  const MyPurchaseScreen = () => {
-    navigation.navigate('MyPurchaseScreen');
+
+  const AppTutorialScreen = () => {
+    navigation.navigate('AppTutorialScreen');
   };
-  const MyLikes = () => {
-    navigation.navigate('MyLikes');
+  
+  const FeedbackScreen = () => {
+    navigation.navigate('FeedbackScreen');
   };
-  const FindFriend = () => {
-    navigation.navigate('Findfriend');
+
+  const Report = () => {
+    navigation.navigate('Report');
   };
+
+  const handleLogout = () => {
+    Alert.alert(
+      "Logout",
+      "Are you sure you want to logout?",
+      [
+        {
+          text: "Cancel",
+          style: "cancel"
+        },
+        {
+          text: "Yes",
+          onPress: () => navigation.navigate('LoginScreen')
+        }
+      ]
+    );
+  };
+
   return (
     <ScrollView contentContainerStyle={styles.scrollViewContainer}>
       <View style={styles.container}>
         <Text style={styles.textSocial}>Social</Text>
-        <ButtonProfile text="Your Guide to DeLujo" marginTop={70} imageLeft={90} imageRight={85} />
-        <ButtonProfile text="Refer and earn cash!" marginTop={130} imageLeft={90} imageRight={87} />
-        <ButtonProfile text="Find people" onPress={FindFriend} marginTop={190} imageLeft={115} imageRight={110} />
-        <Text style={styles.textMystore}>My store</Text>
-        <ButtonProfile text="My Clothes" marginTop={305} imageLeft={118} imageRight={110} />
-        <ButtonProfile text="My Bundles" onPress={MyBundles}  marginTop={365} imageLeft={118} imageRight={110} />
-        <ButtonProfile text="My Size" marginTop={425} imageLeft={125} imageRight={118} />
-        <Text style={styles.textHistroy}>History</Text>
-        <ButtonProfile text="My Likes"   onPress={MyLikes} marginTop={540} imageLeft={125} imageRight={120} />
-        <ButtonProfile text="My Purchases"  onPress={MyPurchaseScreen} marginTop={600} imageLeft={110} imageRight={106} />
-         <Text style={styles.textPayment}>Payment</Text>
-        <ButtonProfile text="My Payment Methods " marginTop={710} imageLeft={95} imageRight={85} />
-        <ButtonProfile text="My Addresses" marginTop={770} imageLeft={115} imageRight={105} />
-        
+        <ButtonProfile text="Your Guide to DeLujo" onPress={GuideScreen} marginTop={70} imageLeft={90} imageRight={85} />
+        {/* <ButtonProfile text="Refer and earn cash!" marginTop={130} imageLeft={90} imageRight={87} /> */}
+        <Text style={styles.textMystore}>Help and Support</Text>
+        <ButtonProfile text="Feedback" onPress={FeedbackScreen} marginTop={250} imageLeft={118} imageRight={110} />
+        <ButtonProfile text="App Tutorial" onPress={AppTutorialScreen} marginTop={310} imageLeft={118} imageRight={110} />
+        {/* <Text style={styles.textPayment}>Payment</Text>
+        <ButtonProfile text="My Payment Methods" marginTop={420} imageLeft={95} imageRight={85} />
+        <ButtonProfile text="My Addresses" marginTop={480} imageLeft={115} imageRight={105} /> */}
       </View>
       <View style={styles.logout}>
-      <TouchableOpacity style={{left:40,}}>
-      <Text style={styles.logoutText}>Logout</Text>
-    </TouchableOpacity>
-    </View>
+        <TouchableOpacity style={{ left: 40 }} onPress={Report }>
+          <Text style={styles.logoutText}>Admin</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.logout}>
+        <TouchableOpacity style={{ left: 40 }} onPress={handleLogout}>
+          <Text style={styles.logoutText}>Logout</Text>
+        </TouchableOpacity>
+      </View>
     </ScrollView>
   );
 };
@@ -59,36 +79,36 @@ const styles = StyleSheet.create({
     width: 400,
     borderTopRightRadius: 70,
     borderTopLeftRadius: 70,
+    marginTop: 0,
   },
   textSocial: {
     color: "#6F50C2",
     fontSize: 20,
     marginTop: 25,
     padding: 10,
-    paddingLeft:40,
-    
+    paddingLeft: 40,
   },
   textMystore: {
     color: "#6F50C2",
     fontSize: 20,
-    marginTop: 190,
+    marginTop: 130,
     padding: 10,
-    paddingLeft:40,
+    paddingLeft: 40,
   },
   textHistroy: {
     color: "#6F50C2",
     fontSize: 20,
     marginTop: 185,
     padding: 10,
-    paddingLeft:40,
+    paddingLeft: 40,
   },
   textPayment: {
     color: "#6F50C2",
     fontSize: 20,
     marginBottom: 110,
-    marginTop:125,
+    marginTop: 125,
     padding: 10,
-    paddingLeft:40,
+    paddingLeft: 40,
   },
   logout: {
     width: 400,

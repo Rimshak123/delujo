@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Image } from 'react-native';
 import HamburgerIcon from '../icons/HamburgerIcon';
 import AddFriendIcon from '../icons/AddFriendIcon';
 import LikeIcon from '../icons/LikeIcon';
@@ -12,16 +12,19 @@ const HeaderWithSearchBar = ({ onHamburgerPress, onAddFriendPress, onLikePress, 
     <View style={styles.headerContainer}>
     
       <View style={[styles.iconContainer ,styles.iconWithMargin]}>
-      <HamburgerIcon onPress={onHamburgerPress} />
+      <Image
+        source={require('../assets/DeLujo-Logo.png')} 
+        style={styles.image}
+      />
+
       </View>
       <SearchBar onSearch={onSearch} />
-      <View style={[styles.iconContainer]}>
+      <View style={{marginLeft:15}}/>
+      <View style={[styles.iconContainer, { marginRight: 0 }]}>
         <AddFriendIcon  />
       </View>
      
-      <View style={[styles.iconContainer]}>
-      <LikeIcon onPress={onLikePress}  />
-      </View>
+      
     </View>
   );
 };
@@ -43,6 +46,12 @@ const styles = StyleSheet.create({
   iconContainer: {
     marginHorizontal: 10,
     top:5,
+  },
+  image: {
+    width: 30,
+    height: 28,
+    marginTop:5,
+    marginLeft:-30,
   },
 });
 

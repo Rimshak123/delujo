@@ -1,17 +1,11 @@
+// routes/userRoutes.js
 const express = require('express');
-const { registerController,loginController } = require('../controllers/userController');
+const { registerController, loginController, getAllUsersController } = require('../controllers/userController');
+
 const router = express.Router();
-// const multer = require('multer');
 
-// routes
-//Signup
 router.post('/register', registerController);
-
-//login
 router.post('/login', loginController);
+router.get('/users', getAllUsersController); // New route for fetching all users
 
-// export
 module.exports = router;
-
-
-

@@ -9,16 +9,16 @@ const Banners = ({ bannerImagePath, bannerText, boxImagePath, boxText}) => {
         <View style={{ position: 'relative', }}>
           <Image source={bannerImagePath} style={styles.bannerImage} />
           <Text style={styles.bannerText}>
-          See the {'\n'}
-        <Text style={{fontWeight:'bold'}}>latest bundles</Text></Text>
+          Shop Smarter {'\n'}
+        <Text style={{fontWeight:'bold'}}>Save More</Text></Text>
         </View>
-
         {/* Banner 2 */}
+        {/* Seamless Shopping at [App Name]. */}
         <View style={styles.boxContainer}>
           <View style={styles.boxImageContainer}>
             <Image source={boxImagePath} style={styles.boxImage} />
-            <Text style={styles.boxText}> See the {'\n'}
-        <Text style={{fontWeight:'bold'}}>latest bundles</Text></Text>
+            <Text style={styles.boxText}>
+            Seamless Shopping{'\n'} at Delujo</Text>
           </View>
         </View>
       </View>
@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
    left:50,
    top:40,
+   fontWeight:'bold'
     
   },
 
@@ -69,6 +70,7 @@ const styles = StyleSheet.create({
   boxImage: {
     width: 100,
     height: 100,
+    marginLeft:170,
    
   },
   boxText: {
@@ -76,6 +78,9 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     color: 'white', // Set your desired text color
     fontSize: 16,
+    fontWeight:'bold',
+    left:15,
+    
   },
 //   boxText: {
 //     alignSelf: 'center',

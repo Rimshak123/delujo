@@ -17,7 +17,6 @@ const LoginScreen = () => {
         imageHeight={55}
       />
       <LoginBody2 />
-      
     </View>
   );
 };

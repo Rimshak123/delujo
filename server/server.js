@@ -1,36 +1,49 @@
 const express = require("express");
 const cors = require("cors");
-const dotenv = require("dotenv");
-const colors = require("colors");
 const morgan = require("morgan");
-const multer = require("multer");
 const connectDb = require("./config/db");
+const bodyParser = require("body-parser");
+const imageRoutes = require("./routes/imageRoutes");
+const itemRoutes = require("./routes/itemRoutes");
+const userRoutes = require("./routes/userRoutes");
+const likes = require('./routes/likes');
+const paymentRoutes = require('./routes/paymentRoutes');
+const commentRoutes = require('./routes/commentRoutes');
+
+const colors = require("colors"); 
 
 // DOTENV
 // dotenv.config();
 
-// //Mongo Db connection
+//Mongo Db connection
 connectDb();
 
 // REST OBJECT
 const app = express();
 
-// middlewares
+// Middlewares
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 
-// ROUTES
-app.use("/api/v1/auth", require("./routes/userRoutes"));
+// Routes
+app.use("/api/v1/auth", userRoutes);
+app.use("/api", imageRoutes);
+app.use("/api/items", itemRoutes);
+app.use('/api/likes', likes);
+app.use("/api/comments", commentRoutes);
+app.use('/api/payments/intent', paymentRoutes);
 
-//middleware
+
+// Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({
     success: false,
-    error: "Internal Server Error"
+    error: "Internal Server Error",
   });
-});git
+});
 
 // PORT
 const PORT = process.env.PORT || 5000;
@@ -40,12 +53,3 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`.bgGreen.white);
 });
 
-
-
-// ROUTES
-// app.get("", (req, res) => {
-//     res.status(200).json({
-//         success: true,
-//         message: "Backend of DeLujo App",
-//     });
-// });

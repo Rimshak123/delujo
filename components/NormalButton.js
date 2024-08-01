@@ -4,7 +4,7 @@ import FaceBookIcon from '../icons/FaceBookIcon';
 import GoogleIcon from "../icons/GoogleIcon";
 
 const NormalButton = (props) => {
-  const { title, width, height, iconType,borderRadius ,marginTop, backgroundColor,handleSigin } = props;
+  const { title, width, height, iconType,borderRadius ,marginTop, backgroundColor,handleSignin } = props;
 
   const renderIcon = () => {
     switch (iconType) {
@@ -18,7 +18,7 @@ const NormalButton = (props) => {
   };
   return (
     <View style={styles.container}>
-     <TouchableOpacity style={[styles.Button, { width, height,borderRadius, marginTop,backgroundColor } ] } onPress={handleSigin}>
+     <TouchableOpacity style={[styles.Button, { width, height,borderRadius, marginTop,backgroundColor } ] } onPress={handleSignin}>
      {iconType && renderIcon()}
      <View style={styles.textContainer}></View>
         <Text style={{ color: "#fff" }}>{props.title}</Text>

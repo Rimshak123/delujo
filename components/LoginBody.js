@@ -1,85 +1,94 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Image, Alert} from "react-native";
+import { View, StyleSheet, Alert, TouchableOpacity , Text} from "react-native";
 import NormalButton from "./NormalButton";
-import CustomButton from "./CustomButton";
+import CustomButton from "./CustomButton"; // Ensure CustomButton is imported correctly
 import Textbar from "./Textbar";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import axios from "axios";
+import { useNavigation } from "@react-navigation/native";
+
 
 const LoginBody = () => {
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState(""); // State for password
+  const navigation = useNavigation();
 
-  
-  const handleSigin = () => {
+  const handleSignin = async () => {
     try {
-      if (!email) {
-        return Alert.alert("Please fill field.");
+      if (!email || !password) {
+        return Alert.alert("Please fill all fields.");
       }
-      console.log("Register Data ==>", { email});
-
+      const { data } = await axios.post(
+        "http://192.168.18.19:5000/api/v1/auth/login",
+        { email, password } // Send both email and password to the backend
+      );
+      await AsyncStorage.setItem("@auth", JSON.stringify(data));
+      Alert.alert(data.message);
+      navigation.navigate("AppNavigator"); // Navigate to HomeScreen after successful login
+      console.log("Login Data ==>", { email });
     } catch (error) {
+      Alert.alert("Login failed. Please try again.");
       console.log(error);
     }
   };
 
+  const getLocalStorageData = async () => {
+    let data = await AsyncStorage.getItem("@auth");
+    console.log("Local Storage ==> ", data);
+  };
+  getLocalStorageData();
+
   return (
     <View style={styles.container}>
+      {/* <View style={{marginTop:10,marginLeft:30}}/> */}
+                
       {/* Custom Button */}
       <View style={styles.custombuttonContainer}>
-        <CustomButton 
-         loginColor='#7252C5'
-         newColor='#000'
-        />
+        <CustomButton loginColor="#7252C5" newColor="#000" />
       </View>
-      {/* FaceBook signup*/}
-      <View style={styles.facebook}>
-        <NormalButton
-          title="   Signup with FaceBook"
-          iconType="facebook"
-          width={300}
-          height={60}
-          marginTop={40}
-          borderRadius={20}
-          backgroundColor="#7051C4"
-        />
-      </View>
-
-      {/* Google Signup */}
-      <View style={styles.google}>
-        <NormalButton
-          title="   Signup with Google"
-          iconType="google"
-          width={300}
-          height={60}
-          marginTop={40}
-          borderRadius={20}
-          backgroundColor="#7051C4"
-        />
-      </View>
-
+      
       {/* Text bar Email address */}
-      <View>
+      <View style={{ marginTop: 40 }}>
         <Textbar
           imagePath={require("../assets/graySpace.png")}
           labelText="EMAIL ADDRESS"
           placeholder="Esteban@innovationsmedia.com"
           textSize={11}
-          textbarMarginTop={0}
           labelLeft={33}
           value={email}
           setValue={setEmail}
         />
       </View>
 
+      {/* Text bar Password */}
+      <View style={{ marginTop: 20 }}>
+        <Textbar
+          imagePath={require("../assets/graySpace.png")}
+          labelText="PASSWORD"
+          placeholder="123456"
+          textSize={11}
+          labelLeft={33}
+          secureTextEntry={true}
+          value={password}
+          setValue={setPassword}
+        />
+      </View>
+
       {/* Login Button */}
       <View style={styles.buttonContainer}>
-      <NormalButton
+        <NormalButton
           title="Signin"
           width={130}
           height={40}
           borderRadius={15}
           backgroundColor="#7051C4"
-          handleSigin={handleSigin}
+          handleSignin={handleSignin}
         />
       </View>
+      <TouchableOpacity style={styles.button} >
+        <Text style={styles.buttonText}>Admin ?</Text>
+      </TouchableOpacity>
+      
     </View>
   );
 };
@@ -94,42 +103,26 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 70,
     borderTopLeftRadius: 70,
   },
-  facebook: {
-    position: "absolute",
-    top: 80,
-  },
-  google: {
-    position: "absolute",
-    top: 160,
-  },
   buttonContainer: {
     position: "absolute",
-    bottom: 80,
+    bottom: 170,
   },
   custombuttonContainer: {
     position: "absolute",
     top: 40,
   },
-  image: {
-    width: 320,
-    height: 65,
-  },
-  textInput: {
-    position: "absolute",
-    top: 12,
-    left: 20,
-    width: 290,
-    height: 35,
-    backgroundColor: "#F3F3F3",
-    borderRadius: 20,
-  },
-  email: {
-    position: "absolute",
-    left: 33,
-    bottom: 55,
-    fontSize: 11,
-    color: "#868688",
-  },
+ button:
+ {
+  //  backgroundColor: '#f3f3f3',
+ marginLeft:180,
+  marginTop:300,
+},
+buttonText: {
+  color: '#7051C4',
+  fontSize: 16,
+  left:33,
+  top:8,
+},
 });
 
 export default LoginBody;

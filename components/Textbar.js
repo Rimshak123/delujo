@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
         fontSize: 11,
         color: '#868688',
     },
+   
 });
 
 export default Textbar;

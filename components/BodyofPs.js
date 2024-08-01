@@ -1,62 +1,55 @@
-import React from 'react';
-import { View, StyleSheet, Image, Text, TouchableOpacity } from 'react-native';
-// import Allcategory from '../components/Allcategory';
-// import CustomButton from '../components/CustomButton';
-import Allcategory from './Allcategory';
+import React, { useEffect, useState } from 'react';
+import { View, Text, ScrollView,StyleSheet,TouchableOpacity , Image} from 'react-native';
+import NormalButton from "./NormalButton";
+import axios from "axios";
 
 const BodyofPs = () => {
+
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+
+  const fetchUsers = async () => {
+    try {
+      const response = await axios.get("http://192.168.18.19:5000/api/v1/auth/users");
+      setUsers(response.data.users);
+    } catch (error) {
+      console.error("Error fetching users:", error);
+    }
+  };
   return (
     <View style={styles.container}>
       <View style={styles.bodyContainer}>
-        <View style={styles.btn}>
-          <TouchableOpacity style={styles.leftButton}>
-            <Text style={{color: '#fff'}}>Fresh Clothes</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.rightButton}>
-            <Text style={{color: '#808080'}}>Just joined</Text>
-          </TouchableOpacity>
+      <ScrollView>
+        {users.map((user, index) => (
+          <View key={index} style={{ marginTop:10,}}>
+              <View style={{ marginTop:35, marginLeft:60}}>
+               <Image source={require('../assets/p1-removebg-preview.png')} style={{height:20, width:25}} />
+               </View>
+            <Text style={styles.userName}>{user.name}</Text>
+            <Text style={styles.userEmail}>{user.email}</Text>
+            {/* <View style={{marginLeft:130, marginTop:5,marginBottom:90,}}>
+            <NormalButton
+          title="Follow"
+          width={70}
+          height={25}
+          borderRadius={7}
+          backgroundColor="#7051C4"
+          // handleSignin={handleSignin}
+           />
         </View>
-        <Allcategory />
-
-        {/* First Image */}
-        <View style={styles.imageContainer}>
-          <Image source={require('../assets/profile-pic.png')} style={styles.image} />
-          <View style={styles.textContainer}>
-            <Text style={styles.imageText}>AyeshaAli</Text>
-            <Text style={{color: '#808080'}}>@ashi12</Text>
+               <TouchableOpacity style={styles.crossButton}>
+          <Text style={styles.crossButtonText}>X</Text>
+       </TouchableOpacity> */}
           </View>
-          <TouchableOpacity style={styles.followButton}>
-            <Text style={{color: '#fff'}}>Follow</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.crossButton}>
-            <Text style={styles.crossButtonText}>X</Text>
-          </TouchableOpacity>
-
-        </View>
-
-        {/* Second Image */}
-        <View style={styles.imageContainer}>
-          <Image source={require('../assets/profile-pic2.png')} style={styles.image} />
-          <View style={styles.textContainer}>
-            <Text style={styles.imageText}>AbdulBasit</Text>
-            <Text style={{color: '#808080'}}>@basit112</Text>
-          </View>
-          <TouchableOpacity style={styles.followButton}>
-            <Text style={{color: '#fff'}}>Follow</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.crossButton}>
-            <Text style={styles.crossButtonText}>X</Text>
-          </TouchableOpacity>
-
-        </View>
-
-      </View>
-
+        ))}
+      </ScrollView>
+       </View>
     </View>
 
-
-  );
-};
+  );};
 
 const styles = StyleSheet.create({
   container: {
@@ -65,7 +58,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   bodyContainer: {
-    width: 395, 
+    width: 395,
     borderTopLeftRadius: 90,
     borderTopRightRadius: 90,
     backgroundColor: "#E7E7E7",
@@ -73,79 +66,29 @@ const styles = StyleSheet.create({
     height: 780,
     marginBottom: 600,
   },
-  imageContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 10,
-    marginTop: 20,
+  userName: {
+    fontSize: 17,
+    fontWeight: "bold",
+    color: "#7252C5",
+    marginLeft:100,
+    marginTop:-25,
   },
-  image: {
-    width: 110,
-    height: 110,
-    borderRadius: 25,
-    marginLeft: 20,
+  userEmail: {
+    fontSize: 14,
+    color: "#555555",
+    marginLeft:100,
+    
   },
-  textContainer: {
-    marginLeft: 25,
-    marginTop:-35,
-    marginRight: 'auto', 
-  },
-  username: {
-    color: '#808080',
-  },
-  followButton: {
-    backgroundColor: '#7252C5',
-    padding: 6,
-    paddingLeft:20,
-    borderRadius: 10,
-    marginRight: 70,
-    marginTop: 70,
-    width:80,
-
-  }, 
-  crossButton: {
-    padding: 5,
-    marginRight: 30,
-    marginTop:-40,
-
+    crossButton: {
+    // padding: 5,
+    marginLeft: 290,
+    marginTop:-120,
   },
   crossButtonText: {
     color: '#7252C5',
     fontSize: 25,
+    fontWeight:"500",
   },
-  leftButton: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 10,
-    width: 155,
-    height: 40,
-    fontSize: 10,
-    borderBottomLeftRadius: 20,
-    borderTopLeftRadius: 20,
-    marginTop: 30,
-    marginLeft: 50,
-    backgroundColor: "#7252C5",
-
-  },
-  rightButton: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 10,
-    width: 155,
-    height: 40,
-    fontSize: 10,
-    borderBottomRightRadius: 20,
-    borderTopRightRadius: 20,
-    marginBottom: 20,
-    marginTop: 30,
-    backgroundColor: "#DDDEDC",
-  },
-  btn: {
-    display: 'flex',
-    flexDirection: 'row',
-    marginBottom: -80,
-    left:-25,
-  }
-});
+})
 
 export default BodyofPs;
